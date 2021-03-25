@@ -27,17 +27,35 @@ export class TodoService {
    * @method: this.http.post
    */
 
+   create(todo: Todo): Observable<Todo>  {
+    return this.http.post<Todo>(this.endPoint, todo);
+  }
+
+
+
 
   /**
    * Update a Todo.
    * @method: this.http.patch
    */
+   update(todo: Todo): Observable<Todo> {
+    return this.http.patch<Todo>(`${this.endPoint}/${todo.id}`, todo);
+  }
+
+
+
+
 
 
   /**
    * Delete a Todo.
    * @method: this.http.delete
    */
+  
+  remove(todo: Todo):  Observable<Todo> {
+    return this.http.delete<Todo>(`${this.endPoint}/${todo.id}`);
+  }
+
 
 
 }
